@@ -1,26 +1,25 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"; 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/Home";
 import ProductsPage from "./pages/Products";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import ProductDetailPage from "./pages/ProductDetail";
-// import MainNavigation from "./components/MainNavigation";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <RootLayout/>,
+    path: "/",
+    element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: '/', element: <HomePage/> },
-      { path: '/products', element: <ProductsPage/> },
-      { path: '/products/:productId', element: <ProductDetailPage/>}
-    ]
-  }
+      { index: true, element: <HomePage /> }, // path: '' <--- this is the alternative
+      { path: "products", element: <ProductsPage /> },
+      { path: "products/:productId", element: <ProductDetailPage /> },
+    ],
+  },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
 
 export default App;
